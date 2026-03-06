@@ -2,7 +2,7 @@
 
 A full-stack, high-performance Task Management System built with a focus on premium UI/UX, security, and seamless deployment.
 
-[Deployment URL](https://task-management-system-chi-five.vercel.app/)
+[Deployment URL](https://task-management-application-gamma-blush.vercel.app/)
 
 ## ✨ Features
 
