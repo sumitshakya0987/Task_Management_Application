@@ -82,3 +82,13 @@ A full-stack, high-performance Task Management System built with a focus on prem
 2. Add Environment Variable: `NEXT_PUBLIC_API_URL` (your Render URL).
 3. Deploy!
 
+## 🎯 Bonus Features Implemented
+- **Delete a task:** Full deletion capability integrated into the dashboard.
+- **Filter tasks by status:** Filtering capability in the UI allows narrowing down to `Pending` and `Completed` statuses.
+- **Simple Authentication:** A full JWT implementation exists for registering and logging into the platform to keep tasks strictly associated with the active user.
+
+## ⚠️ Assumptions & Limitations
+- **Local SQLite DB:** SQLite is used as the database. While perfect for local development and simple lightweight deployments (like Render free tier with persistent disks depending on configuration), it may not horizontally scale well if deployed in a serverless cloud environment like AWS Lambda or standard ephemeral Render instances for high-traffic environments. 
+- **Timezones:** `created_at` records are generally handled in UTC globally; localization happens purely on the client side without strict timezone overrides.
+- **Image/Attachment Support:** Currently, the system manages text-based (Title + Description) tasks; image or file attachments are not supported.
+
