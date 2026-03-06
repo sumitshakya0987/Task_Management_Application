@@ -9,7 +9,7 @@ A full-stack, high-performance Task Management System built with a focus on prem
 - **Premium Dark UI**: Built with a sleek, glassmorphic aesthetic using Tailwind CSS.
 - **Secure Authentication**: JWT-based login and registration with Bcrypt password hashing.
 - **Real-time Task Management**: Full CRUD operations with instant UI updates.
-- **Smart Filtering & Search**: Filter tasks by status (Todo, In Progress, Completed) and search by title.
+- **Smart Filtering & Search**: Filter tasks by status (Pending, Completed) and search by title.
 - **Advanced UX**: Custom confirmation modals, toast notifications, and smooth micro-animations.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop views.
 - **Auto-DB Initialization**: Zero-config database setup on deployment via Prisma.

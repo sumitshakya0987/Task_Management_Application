@@ -37,7 +37,7 @@ export default function DashboardPage() {
     // Form state
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [taskStatus, setTaskStatus] = useState("TODO");
+    const [taskStatus, setTaskStatus] = useState("Pending");
 
     const fetchTasks = useCallback(async () => {
         setLoading(true);
@@ -124,7 +124,7 @@ export default function DashboardPage() {
         setEditingTask(null);
         setTitle("");
         setDescription("");
-        setTaskStatus("TODO");
+        setTaskStatus("Pending");
     };
 
     if (authLoading) return (
@@ -204,9 +204,8 @@ export default function DashboardPage() {
                             className="w-full bg-[#121215] border border-white/5 rounded-2xl py-4 pl-12 pr-10 focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]/30 focus:border-[#8b5cf6] transition-all appearance-none text-gray-300"
                         >
                             <option value="">All Statuses</option>
-                            <option value="TODO">To Do</option>
-                            <option value="IN_PROGRESS">In Progress</option>
-                            <option value="COMPLETED">Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
                         </select>
                     </div>
                 </div>
@@ -227,9 +226,9 @@ export default function DashboardPage() {
                                     <div className="flex justify-between items-start mb-4 relative z-10">
                                         <button
                                             onClick={() => handleToggle(task.id)}
-                                            className={`p-1.5 rounded-lg transition-colors ${task.status === "COMPLETED" ? "text-emerald-400 bg-emerald-500/10" : "text-gray-500 bg-white/5 hover:text-gray-400"}`}
+                                            className={`p-1.5 rounded-lg transition-colors ${task.status === "Completed" ? "text-emerald-400 bg-emerald-500/10" : "text-gray-500 bg-white/5 hover:text-gray-400"}`}
                                         >
-                                            {task.status === "COMPLETED" ? <CheckCircle2 className="w-6 h-6" /> : <Circle className="w-6 h-6" />}
+                                            {task.status === "Completed" ? <CheckCircle2 className="w-6 h-6" /> : <Circle className="w-6 h-6" />}
                                         </button>
 
                                         <div className="flex items-center gap-1 opacity-10 md:opacity-0 group-hover:opacity-100 transition-opacity">
@@ -239,7 +238,7 @@ export default function DashboardPage() {
                                     </div>
 
                                     <div className="flex-1 mb-6">
-                                        <h3 className={`text-xl font-bold mb-2 transition-all ${task.status === "COMPLETED" ? "text-gray-500 line-through" : "text-white group-hover:text-indigo-200"}`}>
+                                        <h3 className={`text-xl font-bold mb-2 transition-all ${task.status === "Completed" ? "text-gray-500 line-through" : "text-white group-hover:text-indigo-200"}`}>
                                             {task.title}
                                         </h3>
                                         <p className="text-gray-400 text-sm line-clamp-3 leading-relaxed">
@@ -248,11 +247,10 @@ export default function DashboardPage() {
                                     </div>
 
                                     <div className="flex items-center justify-between pt-4 border-t border-white/5 text-xs text-gray-500 mt-auto">
-                                        <span className={`px-2.5 py-1 rounded-full font-medium ${task.status === "TODO" ? "bg-amber-500/10 text-amber-500" :
-                                            task.status === "IN_PROGRESS" ? "bg-[#6366f1]/10 text-[#6366f1]" :
-                                                "bg-emerald-500/10 text-emerald-500"
+                                        <span className={`px-2.5 py-1 rounded-full font-medium ${task.status === "Pending" ? "bg-amber-500/10 text-amber-500" :
+                                            "bg-emerald-500/10 text-emerald-500"
                                             }`}>
-                                            {task.status.replace("_", " ")}
+                                            {task.status}
                                         </span>
                                         <div className="flex items-center gap-1">
                                             <Clock className="w-3.5 h-3.5" />
@@ -350,19 +348,18 @@ export default function DashboardPage() {
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-gray-400 ml-1">Status</label>
                                 <div className="flex gap-2">
-                                    {["TODO", "IN_PROGRESS", "COMPLETED"].map((s) => (
+                                    {["Pending", "Completed"].map((s) => (
                                         <button
                                             key={s}
                                             type="button"
                                             onClick={() => setTaskStatus(s)}
                                             className={`flex-1 py-3 px-2 rounded-xl text-xs font-bold transition-all border ${taskStatus === s
-                                                ? (s === "TODO" ? "bg-amber-500/10 border-amber-500/50 text-amber-500" :
-                                                    s === "IN_PROGRESS" ? "bg-indigo-500/10 border-indigo-500/50 text-indigo-500" :
-                                                        "bg-emerald-500/10 border-emerald-500/50 text-emerald-500")
+                                                ? (s === "Pending" ? "bg-amber-500/10 border-amber-500/50 text-amber-500" :
+                                                    "bg-emerald-500/10 border-emerald-500/50 text-emerald-500")
                                                 : "bg-[#1a1a1e] border-white/5 text-gray-500 hover:border-white/10"
                                                 }`}
                                         >
-                                            {s.replace("_", " ")}
+                                            {s}
                                         </button>
                                     ))}
                                 </div>

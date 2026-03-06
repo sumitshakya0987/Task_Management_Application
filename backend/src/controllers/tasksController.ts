@@ -6,7 +6,7 @@ import prisma from "../lib/prisma.js";
 const TaskSchema = z.object({
     title: z.string().min(1),
     description: z.string().optional(),
-    status: z.enum(["TODO", "IN_PROGRESS", "COMPLETED"]).optional(),
+    status: z.enum(["Pending", "Completed"]).optional(),
 });
 
 export const createTask = async (req: AuthRequest, res: Response) => {
@@ -16,7 +16,7 @@ export const createTask = async (req: AuthRequest, res: Response) => {
             data: {
                 title,
                 description,
-                status: status || "TODO",
+                status: status || "Pending",
                 userId: req.userId!,
             },
         });
@@ -121,7 +121,7 @@ export const toggleTaskStatus = async (req: AuthRequest, res: Response) => {
         });
         if (!task) return res.status(404).json({ error: "Task not found" });
 
-        const newStatus = task.status === "COMPLETED" ? "TODO" : "COMPLETED";
+        const newStatus = task.status === "Completed" ? "Pending" : "Completed";
         const updatedTask = await prisma.task.update({
             where: { id: Number(id) },
             data: { status: newStatus },

@@ -27,7 +27,7 @@ model Task {
   id          Int      @id @default(autoincrement())
   title       String
   description String?
-  status      String   @default("TODO") // TODO, IN_PROGRESS, COMPLETED
+  status      String   @default("Pending") // Pending, Completed
   userId      Int
   user        User     @relation(fields: [userId], references: [id])
   createdAt   DateTime @default(now())
